@@ -6,7 +6,7 @@
 /*   By: acanelas <acanelas@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 03:49:58 by acanelas          #+#    #+#             */
-/*   Updated: 2023/03/17 00:54:31 by acanelas         ###   ########.fr       */
+/*   Updated: 2023/03/17 23:47:11 by acanelas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ typedef struct s_stack
 	int	*int_array;
 }	t_stack;
 
-int		error(void);
+int		error(t_stack *a, t_stack *b);
 t_stack	*init_struct(int size);
 bool	is_sorted(t_stack *stack_a);
-void	process_input(t_stack *stack_a, int size, char **argv);
+bool	process_input(t_stack *stack_a, int size, char **argv);
 void	pa(t_stack *a, t_stack *b);
 void	pb(t_stack *a, t_stack *b);
 void	sa(t_stack *a, int j);
@@ -54,5 +54,6 @@ void	push_number(t_stack *stack, int value);
 int		pop_number(t_stack *stack);
 void	big_boy_sort(t_stack *a, t_stack *b);
 bool	repeated_arg(char **str);
+void	clean_n_go(t_stack *a, t_stack *b);
 
 #endif

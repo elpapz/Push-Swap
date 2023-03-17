@@ -6,7 +6,7 @@
 /*   By: acanelas <acanelas@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 02:42:14 by acanelas          #+#    #+#             */
-/*   Updated: 2023/03/17 00:53:50 by acanelas         ###   ########.fr       */
+/*   Updated: 2023/03/17 21:23:53 by acanelas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	max_number(t_stack *stack)
 
 	i = 0;
 	max_number = stack->int_array[0];
-	while (i < stack->top_number)
+	while (i <= stack->top_number)
 	{
 		if (max_number < stack->int_array[i])
 			max_number = stack->int_array[i];

@@ -6,16 +6,17 @@
 /*   By: acanelas <acanelas@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 04:09:04 by acanelas          #+#    #+#             */
-/*   Updated: 2023/03/17 00:52:35 by acanelas         ###   ########.fr       */
+/*   Updated: 2023/03/17 23:35:18 by acanelas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	error(void)
+int	error(t_stack *a, t_stack *b)
 {
+	clean_n_go(a, b);
 	write(STDERR_FILENO, "Error\n", 6);
-	return (0);
+	return (EXIT_FAILURE);
 }
 
 t_stack	*init_struct(int size)
@@ -34,11 +35,24 @@ bool	is_sorted(t_stack *stack_a)
 	int	i;
 
 	i = 0;
-	while (i < stack_a->top_number)
+	if (stack_a->stack_size > 3)
 	{
-		if (stack_a->int_array[i] < stack_a->int_array[i + 1])
-			return (false);
-		i++;
+		while (i < stack_a->top_number)
+		{
+			if (stack_a->int_array[i] < stack_a->int_array[i + 1])
+				return (false);
+			i++;
+		}
+		return (true);
+	}
+	else
+	{
+		while (i < stack_a->top_number)
+		{
+			if (stack_a->int_array[i] > stack_a->int_array[i + 1])
+				return (false);
+			i++;
+		}
 	}
 	return (true);
 }

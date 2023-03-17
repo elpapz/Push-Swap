@@ -6,7 +6,7 @@
 /*   By: acanelas <acanelas@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 04:26:02 by acanelas          #+#    #+#             */
-/*   Updated: 2023/03/17 00:51:39 by acanelas         ###   ########.fr       */
+/*   Updated: 2023/03/17 23:46:44 by acanelas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,21 +106,27 @@ static	int	*convert_to_int(int size, char **argv)
 	return (list);
 }
 
-void	process_input(t_stack *stack_a, int size, char **argv)
+bool	process_input(t_stack *stack_a, int size, char **argv)
 {
 	int	i;
+	int	j;
 	int	*temp_array;
 
 	i = size - 1;
+	j = -1;
 	if (check_char(argv) == false)
-		return ;
+		return (false);
 	temp_array = convert_to_int(size, argv);
 	if (!temp_array)
-		return ;
+		return (false);
 	while (i >= 0)
 	{
-		push_number(stack_a, temp_array[i]);
+		if (stack_a->stack_size <= 3)
+			push_number(stack_a, temp_array[++j]);
+		else
+			push_number(stack_a, temp_array[i]);
 		i--;
 	}
 	free(temp_array);
+	return (true);
 }
